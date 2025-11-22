@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetjobsQuery } from '../features/job/jobapi';
+import { useGetjobsQuery } from '../features/job/jobApi';
 import { useCheckSessionQuery, useCardQuery, useDpostQuery, useFtypeMutation } from '../features/auth/authApi';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
