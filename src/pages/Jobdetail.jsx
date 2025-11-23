@@ -32,6 +32,13 @@ const Jobdetail = () => {
   }, [d]);
   const [error, setError] = useState('');
   const ph = /^[0-9]{10}$/;
+  const h = () => {
+    return (
+      
+      user.phone && ph.test(user.phone) &&
+      
+    )
+  }
   const handleChange = (e) => {
     const { name, type, files, value } = e.target;
     
@@ -131,7 +138,7 @@ const Jobdetail = () => {
                       <input type="email" className="form-control" name="email" placeholder="Your Email" value={user.email} />
                     </div>
                     <div className="col-12 col-sm-6">
-                      <input type="tel" className="form-control" name="phone" placeholder="Your Phone no" value={user.phone} maxLength={10} minLength={10} onChange={handleChange} required/>
+                      <input type="tel" className="form-control" name="phone" placeholder="Your Phone no" value={user.phone} maxLength={10} onChange={handleChange} required/>
                      {
                   user.phone && !ph.test(user.phone) && (
                     <p className="text-danger">
@@ -146,7 +153,7 @@ const Jobdetail = () => {
                     </div>
 
                     <div className="col-12">
-                      <button className="btn btn-primary w-100" type="submit" disabled={isLoading}>
+                      <button className="btn btn-primary w-100" type="submit" disabled={!h() || isLoading}>
                          {isLoading ? (
     <>
       <span className="spinner-border spinner-border-sm me-2" role="status" /> 
