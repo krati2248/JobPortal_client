@@ -31,6 +31,7 @@ const Jobdetail = () => {
     }
   }, [d]);
   const [error, setError] = useState('');
+  const ph = /^[0-9]{10}$/;
   const handleChange = (e) => {
     const { name, type, files, value } = e.target;
     
@@ -43,7 +44,10 @@ const Jobdetail = () => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-    
+    if (!ph.test(user.phone)) {
+
+      return;
+    }
     try {
       const data = new FormData();
       Object.entries(user).forEach(([key, value]) => {
@@ -128,6 +132,13 @@ const Jobdetail = () => {
                     </div>
                     <div className="col-12 col-sm-6">
                       <input type="tel" className="form-control" name="phone" placeholder="Your Phone no" value={user.phone} maxLength={10} minLength={10} onChange={handleChange} required/>
+                     {
+                  user.phone && !ph.test(user.phone) && (
+                    <p className="text-danger">
+                      Phone no. must be 10 digit
+                    </p>
+                  )
+                }
                     </div>
                     <label>Upload Resume</label>
                     <div className="col-12 col-sm-6">
